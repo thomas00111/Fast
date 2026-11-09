@@ -1,0 +1,198 @@
+[gd_scene load_steps=17 format=3 uid="uid://8pesl1uhyomj"]
+
+[ext_resource type="Script" path="res://level/tuto.gd" id="1_b4v0j"]
+[ext_resource type="Shader" path="res://level/sky.gdshader" id="1_ws5ym"]
+[ext_resource type="PackedScene" uid="uid://dg3d0ypceprlq" path="res://UI/MENU/timer/timer_ui.tscn" id="2_aoff1"]
+[ext_resource type="PackedScene" uid="uid://7pwvpff1rip0" path="res://UI/MENU/tuto_finish.tscn" id="4_4etxx"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://character/character.tscn" id="4_bpi2j"]
+[ext_resource type="PackedScene" uid="uid://bs22m7vmh7xkb" path="res://character/ghost.tscn" id="5_63b48"]
+[ext_resource type="PackedScene" uid="uid://brx1kfkreopi7" path="res://props/block/water.tscn" id="6_gg44t"]
+[ext_resource type="Texture2D" uid="uid://c1f8yjo01j4ll" path="res://UI/move.png" id="8_c0yhi"]
+[ext_resource type="Texture2D" uid="uid://bbcr7afvraj73" path="res://UI/jump.png" id="9_vmc7r"]
+[ext_resource type="Texture2D" uid="uid://cv8fgqtpivxau" path="res://UI/dash.png" id="10_13s0w"]
+[ext_resource type="Texture2D" uid="uid://dgasdspkffs8j" path="res://UI/grappin.png" id="11_1pfjm"]
+[ext_resource type="Texture2D" uid="uid://dbcotktc6f310" path="res://UI/wall.png" id="12_ndyhk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_epemu"]
+size = Vector3(15.3962, 7.79211, 11.4628)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gdum0"]
+shader = ExtResource("1_ws5ym")
+shader_parameter/offset_horizon = 0.7
+shader_parameter/horizon_intensity = -10.0
+shader_parameter/sun_set = Color(1, 0.8, 1, 1)
+shader_parameter/horizon_color_day = Color(0, 0.8, 1, 1)
+shader_parameter/horizon_color_night = Color(0, 0.8, 1, 1)
+shader_parameter/sun_color = Color(0.617455, 0.617455, 0.617455, 1)
+shader_parameter/sun_radius = 0.5
+shader_parameter/flat_sun = true
+shader_parameter/moon_color = Color(1, 1, 1, 1)
+shader_parameter/moon_radius = 0.15
+shader_parameter/moon_crescent = -0.3
+shader_parameter/dark_falloff = 4.0
+shader_parameter/day_bottom_color = Color(0.615974, 1, 0.997465, 1)
+shader_parameter/day_top_color = Color(0.507658, 0.865996, 1, 1)
+shader_parameter/night_bottom_color = Color(0, 0, 0.2, 1)
+shader_parameter/night_top_color = Color(0, 0, 0, 1)
+shader_parameter/base_noise_scale = 0.2
+shader_parameter/stars_speed = 0.3
+shader_parameter/stars_cutoff = 0.08
+shader_parameter/stars_sky_color = Color(0, 0.2, 0.1, 1)
+
+[sub_resource type="Sky" id="Sky_lw6ok"]
+sky_material = SubResource("ShaderMaterial_gdum0")
+
+[sub_resource type="Environment" id="Environment_o8iml"]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_lw6ok")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.0
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="tuto" type="Node3D"]
+script = ExtResource("1_b4v0j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="timer_ui" parent="." instance=ExtResource("2_aoff1")]
+
+[node name="tuto_finish" parent="." instance=ExtResource("4_4etxx")]
+visible = false
+
+[node name="Character" parent="." instance=ExtResource("4_bpi2j")]
+
+[node name="ghost" parent="." instance=ExtResource("5_63b48")]
+
+[node name="blocContainer" type="Node3D" parent="."]
+
+[node name="Water" parent="." instance=ExtResource("6_gg44t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+
+[node name="Move" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(960, 95)
+scale = Vector2(5, 5)
+texture = ExtResource("8_c0yhi")
+
+[node name="zqsd" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.454
+anchor_right = 0.544
+anchor_bottom = 0.166
+offset_left = -0.680054
+offset_right = -0.480103
+offset_bottom = -0.280014
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelZ" type="Label" parent="zqsd"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.451
+anchor_top = 0.162
+anchor_right = 0.572
+anchor_bottom = 0.43
+offset_left = -0.0229721
+offset_top = 0.00200081
+offset_right = 0.0440292
+offset_bottom = 0.0299988
+theme_override_font_sizes/font_size = 40
+text = "z"
+
+[node name="LabelS" type="Label" parent="zqsd"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.457
+anchor_top = 0.57
+anchor_right = 0.566
+anchor_bottom = 0.838
+offset_left = -0.0610046
+offset_top = -0.0300064
+offset_right = 0.0819931
+offset_bottom = -0.00201416
+theme_override_font_sizes/font_size = 40
+text = "s"
+
+[node name="LabelQ" type="Label" parent="zqsd"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.553
+anchor_right = 0.289
+anchor_bottom = 0.821
+offset_left = 0.0500145
+offset_top = 0.0129929
+offset_right = 0.00301361
+offset_bottom = 0.0410004
+theme_override_font_sizes/font_size = 40
+text = "q"
+
+[node name="LabelD" type="Label" parent="zqsd"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.734
+anchor_top = 0.575
+anchor_right = 0.873
+anchor_bottom = 0.844
+offset_left = 0.0180206
+offset_top = 0.0749893
+offset_right = -0.0289764
+offset_bottom = -0.076004
+theme_override_font_sizes/font_size = 40
+text = "d"
+
+[node name="Jump" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(960, 95)
+scale = Vector2(5, 5)
+texture = ExtResource("9_vmc7r")
+
+[node name="LabelJump" type="Label" parent="."]
+visible = false
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.471
+anchor_top = 0.059
+anchor_right = 0.527
+anchor_bottom = 0.104
+offset_left = 0.679993
+offset_top = 0.279995
+offset_right = 0.159973
+offset_bottom = -0.32
+theme_override_font_sizes/font_size = 40
+text = "space"
+
+[node name="Dash" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(960, 95)
+scale = Vector2(5, 5)
+texture = ExtResource("10_13s0w")
+
+[node name="Grappin" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(960, 95)
+scale = Vector2(5, 5)
+texture = ExtResource("11_1pfjm")
+
+[node name="Wall" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(960, 95)
+scale = Vector2(5, 5)
+texture = ExtResource("12_ndyhk")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.277954, 2.37982, -3.40341)
+shape = SubResource("BoxShape3D_epemu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o8iml")

@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjt20scdsnwn"]
+
+[ext_resource type="Script" path="res://level/levelEditor/props/blocs/edit_bloc.gd" id="1_ixv2u"]
+[ext_resource type="PackedScene" uid="uid://7gbd20a5a3wj" path="res://surface/magnet/magnet.tscn" id="1_sk1h0"]
+[ext_resource type="Script" path="res://level/levelEditor/relative.gd" id="2_wd4qi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w5nv0"]
+size = Vector3(0.5, 5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3ept"]
+transparency = 1
+albedo_color = Color(0.764706, 0.643137, 0, 0.223529)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yb7qh"]
+material = SubResource("StandardMaterial3D_p3ept")
+size = Vector3(0.5, 5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ofv8b"]
+size = Vector3(1, 0.5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4tkc3"]
+transparency = 1
+albedo_color = Color(0.764706, 0.643137, 0, 0.223529)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6bts4"]
+material = SubResource("StandardMaterial3D_4tkc3")
+size = Vector3(1, 0.5, 5)
+
+[node name="editMagnet" type="Node3D"]
+script = ExtResource("1_ixv2u")
+
+[node name="magnet" parent="." instance=ExtResource("1_sk1h0")]
+
+[node name="StaticBodyRight" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+script = ExtResource("2_wd4qi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBodyRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24968, 2.5, -0.494473)
+shape = SubResource("BoxShape3D_w5nv0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBodyRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2498, 2.5, -0.494473)
+mesh = SubResource("BoxMesh_yb7qh")
+
+[node name="StaticBodyLeft" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+script = ExtResource("2_wd4qi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBodyLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24237, 2.5, -0.494473)
+shape = SubResource("BoxShape3D_w5nv0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBodyLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24225, 2.5, -0.494473)
+mesh = SubResource("BoxMesh_yb7qh")
+
+[node name="StaticBodyHaut" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5, 0)
+script = ExtResource("2_wd4qi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBodyHaut"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.507415, 0.239625, -0.0116316)
+shape = SubResource("BoxShape3D_ofv8b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBodyHaut"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.507295, 0.239625, -0.0116316)
+mesh = SubResource("BoxMesh_6bts4")

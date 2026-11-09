@@ -1,0 +1,163 @@
+[gd_scene load_steps=9 format=3 uid="uid://dv4rd5d6hbgbx"]
+
+[ext_resource type="Script" path="res://UI/MENU/option_ui.gd" id="1_wa82q"]
+[ext_resource type="Texture2D" uid="uid://cv8fgqtpivxau" path="res://UI/dash.png" id="2_a5max"]
+[ext_resource type="FontFile" uid="uid://de4k0luy4njm4" path="res://UI/font/PoetsenOne-Regular.ttf" id="2_o6ah5"]
+[ext_resource type="Texture2D" uid="uid://dgasdspkffs8j" path="res://UI/grappin.png" id="3_mx42y"]
+[ext_resource type="Texture2D" uid="uid://s2ej3e015wul" path="res://UI/buttons/buttonColor.png" id="3_wvycf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4emm4"]
+texture = ExtResource("3_wvycf")
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v8qqp"]
+texture = ExtResource("3_wvycf")
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sn2vv"]
+texture = ExtResource("3_wvycf")
+modulate_color = Color(0, 0, 0, 1)
+
+[node name="optionUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wa82q")
+
+[node name="ButtonReturn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = 0.017
+anchor_right = 0.05
+anchor_bottom = 0.068
+offset_left = -0.880001
+offset_top = -0.360001
+offset_bottom = -0.440002
+theme_override_colors/font_hover_color = Color(0.815686, 0.811765, 0.811765, 1)
+theme_override_colors/font_pressed_color = Color(0.815686, 0.811765, 0.811765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_o6ah5")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/hover = SubResource("StyleBoxTexture_4emm4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v8qqp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_sn2vv")
+text = "<-"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.077
+anchor_top = 0.15
+anchor_right = 0.208
+anchor_bottom = 0.756
+offset_left = 0.159988
+offset_right = 0.639984
+offset_bottom = 0.519958
+color = Color(0.576471, 0.576471, 0.576471, 0.462745)
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 194.0
+offset_right = 383.0
+offset_bottom = 252.0
+min_value = 0.025
+max_value = 0.2
+step = 0.025
+value = 0.05
+tick_count = 8
+
+[node name="LabelSensi" type="Label" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 185.0
+offset_right = 336.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "sensibility"
+horizontal_alignment = 1
+
+[node name="moveInput" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 283.0
+offset_right = 282.0
+offset_bottom = 312.0
+
+[node name="LabelKey" type="Label" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 257.0
+offset_right = 330.0
+offset_bottom = 280.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "zqsd/wasd"
+horizontal_alignment = 1
+
+[node name="control" type="Label" parent="."]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 326.0
+offset_right = 328.0
+offset_bottom = 349.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "controls"
+horizontal_alignment = 1
+
+[node name="Dash" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(223, 406)
+scale = Vector2(2, 2)
+texture = ExtResource("2_a5max")
+
+[node name="Grappin" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(223, 484)
+scale = Vector2(2, 2)
+texture = ExtResource("3_mx42y")
+
+[node name="control1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 384.0
+offset_right = 396.0
+offset_bottom = 615.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "dash
+
+
+grappin
+
+
+saut
+
+ground pound
+
+side dash
+"
+
+[node name="control2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 541.0
+offset_right = 289.0
+offset_bottom = 642.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "space
+
+shift
+
+a/e"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ButtonReturn" to="." method="_on_button_return_pressed"]
+[connection signal="drag_ended" from="HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="pressed" from="moveInput" to="." method="_on_move_input_pressed"]

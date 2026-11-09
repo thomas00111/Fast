@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dq8htub6ubgx6"]
+
+[ext_resource type="Script" path="res://level/levelEditor/props/blocs/parentEdit.gd" id="1_skc35"]
+[ext_resource type="Material" uid="uid://6066qfxsnlfa" path="res://textures/lightgrid.tres" id="2_27h6r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k74qo"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w6xqf"]
+material = ExtResource("2_27h6r")
+size = Vector3(5, 1, 5)
+
+[node name="bloc" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.5)
+script = ExtResource("1_skc35")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_k74qo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_w6xqf")

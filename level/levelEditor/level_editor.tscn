@@ -1,0 +1,237 @@
+[gd_scene load_steps=20 format=3 uid="uid://bso4xi6lh7hve"]
+
+[ext_resource type="Script" path="res://level/levelEditor/level_editor.gd" id="1_5lefd"]
+[ext_resource type="PackedScene" uid="uid://dnirccgnlpurm" path="res://props/block/waterSolid.tscn" id="1_rubnl"]
+[ext_resource type="PackedScene" uid="uid://cls41ygivkoq0" path="res://level/levelEditor/crea_char.tscn" id="2_qq688"]
+[ext_resource type="Shader" path="res://level/sky.gdshader" id="2_uxryh"]
+[ext_resource type="PackedScene" uid="uid://cr4wr0rorkp0n" path="res://level/levelEditor/props/blocs/editBloc.tscn" id="3_0vu8j"]
+[ext_resource type="Texture2D" uid="uid://d0ltab3r2yk8a" path="res://UI/medals/silverMedal.png" id="5_1voqx"]
+[ext_resource type="Texture2D" uid="uid://6n1n7xvx0y6w" path="res://UI/medals/goldMedal.png" id="6_3v57p"]
+[ext_resource type="Texture2D" uid="uid://crfrcn0sx52e2" path="res://UI/medals/diamondMedal.png" id="7_oxyrb"]
+[ext_resource type="Texture2D" uid="uid://mnjri5xh4pu2" path="res://UI/buttons/saveButton.png" id="8_rusoy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_115ur"]
+texture = ExtResource("8_rusoy")
+expand_margin_left = 60.0
+expand_margin_top = 18.0
+expand_margin_right = 60.0
+expand_margin_bottom = 18.0
+modulate_color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_71jim"]
+texture = ExtResource("8_rusoy")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_okgev"]
+texture = ExtResource("8_rusoy")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mubho"]
+transparency = 1
+albedo_color = Color(0.882353, 0.792157, 0, 0.533333)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gli7b"]
+material = SubResource("StandardMaterial3D_mubho")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkwr4"]
+transparency = 1
+albedo_color = Color(1, 0.92549, 0.117647, 0.301961)
+
+[sub_resource type="TextMesh" id="TextMesh_54g7u"]
+material = SubResource("StandardMaterial3D_lkwr4")
+text = "=>"
+font_size = 127
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2f1ji"]
+shader = ExtResource("2_uxryh")
+shader_parameter/offset_horizon = 0.7
+shader_parameter/horizon_intensity = -10.0
+shader_parameter/sun_set = Color(1, 0.8, 1, 1)
+shader_parameter/horizon_color_day = Color(0, 0.8, 1, 1)
+shader_parameter/horizon_color_night = Color(0, 0.8, 1, 1)
+shader_parameter/sun_color = Color(0.617455, 0.617455, 0.617455, 1)
+shader_parameter/sun_radius = 0.5
+shader_parameter/flat_sun = true
+shader_parameter/moon_color = Color(1, 1, 1, 1)
+shader_parameter/moon_radius = 0.15
+shader_parameter/moon_crescent = -0.3
+shader_parameter/dark_falloff = 4.0
+shader_parameter/day_bottom_color = Color(0.615974, 1, 0.997465, 1)
+shader_parameter/day_top_color = Color(0.507658, 0.865996, 1, 1)
+shader_parameter/night_bottom_color = Color(0, 0, 0.2, 1)
+shader_parameter/night_top_color = Color(0, 0, 0, 1)
+shader_parameter/base_noise_scale = 0.2
+shader_parameter/stars_speed = 0.3
+shader_parameter/stars_cutoff = 0.08
+shader_parameter/stars_sky_color = Color(0, 0.2, 0.1, 1)
+
+[sub_resource type="Sky" id="Sky_g64oe"]
+sky_material = SubResource("ShaderMaterial_2f1ji")
+
+[sub_resource type="Environment" id="Environment_ygr74"]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_g64oe")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.0
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="levelEditor" type="Node3D"]
+script = ExtResource("1_5lefd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="blocContainer" type="Node3D" parent="."]
+
+[node name="EditBloc" parent="blocContainer" instance=ExtResource("3_0vu8j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 2)
+
+[node name="creaChar" parent="." instance=ExtResource("2_qq688")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95465, 0, 2.28077)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ButtonSave" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.061
+anchor_top = 0.057
+anchor_right = 0.119
+anchor_bottom = 0.108
+offset_left = -17.12
+offset_top = 3.44
+offset_right = -18.48
+offset_bottom = 3.36
+text = "save"
+
+[node name="LineLevelName" type="LineEdit" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.052
+anchor_top = 0.127
+anchor_right = 0.266
+anchor_bottom = 0.174
+offset_left = 0.159996
+offset_top = -0.160004
+offset_right = 0.279999
+offset_bottom = 0.0799866
+placeholder_text = "level name"
+
+[node name="ButtonQuit" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.135
+anchor_top = 0.058
+anchor_right = 0.193
+anchor_bottom = 0.11
+offset_left = -9.20001
+offset_top = 2.36
+offset_right = -10.56
+offset_bottom = 1.2
+text = "quit"
+
+[node name="ButtonSetMedals" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.207
+anchor_top = 0.06
+anchor_right = 0.265
+anchor_bottom = 0.11
+offset_left = 2.55997
+offset_top = 0.199997
+offset_right = 1.19998
+offset_bottom = 1.19999
+text = "set medals"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer"]
+visible = false
+
+[node name="SilverMedal" type="Sprite2D" parent="CanvasLayer/CanvasLayer"]
+texture_filter = 1
+position = Vector2(500, 500)
+scale = Vector2(10, 10)
+texture = ExtResource("5_1voqx")
+
+[node name="GoldMedal" type="Sprite2D" parent="CanvasLayer/CanvasLayer"]
+texture_filter = 1
+position = Vector2(900, 500)
+scale = Vector2(10, 10)
+texture = ExtResource("6_3v57p")
+
+[node name="DiamondMedal" type="Sprite2D" parent="CanvasLayer/CanvasLayer"]
+texture_filter = 1
+position = Vector2(1300, 500)
+scale = Vector2(10, 10)
+texture = ExtResource("7_oxyrb")
+
+[node name="LineSilver" type="LineEdit" parent="CanvasLayer/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.208
+anchor_top = 0.593
+anchor_right = 0.302
+anchor_bottom = 0.639
+offset_left = 0.639984
+offset_top = -0.440063
+offset_right = 0.159973
+offset_bottom = -0.120056
+placeholder_text = "silver"
+
+[node name="LineGold" type="LineEdit" parent="CanvasLayer/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.417
+anchor_top = 0.593
+anchor_right = 0.51
+anchor_bottom = 0.639
+offset_left = -0.640076
+offset_top = -0.440063
+offset_right = 0.799927
+offset_bottom = -0.120056
+placeholder_text = "gold"
+
+[node name="LineDiamond" type="LineEdit" parent="CanvasLayer/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.625
+anchor_top = 0.593
+anchor_right = 0.719
+anchor_bottom = 0.639
+offset_top = -0.440063
+offset_right = -0.480103
+offset_bottom = -0.120056
+placeholder_text = "diamond"
+
+[node name="ButtonSaveMedal" type="Button" parent="CanvasLayer/CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.408
+anchor_top = 0.755
+anchor_right = 0.512
+anchor_bottom = 0.876
+offset_left = -0.360046
+offset_top = -4.40002
+offset_right = -0.039917
+offset_bottom = -0.0800781
+theme_override_styles/hover = SubResource("StyleBoxTexture_115ur")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_71jim")
+theme_override_styles/normal = SubResource("StyleBoxTexture_okgev")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_gli7b")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.25678)
+mesh = SubResource("TextMesh_54g7u")
+
+[node name="waterSolid" parent="." instance=ExtResource("1_rubnl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ygr74")
+
+[connection signal="pressed" from="CanvasLayer/ButtonSave" to="." method="_on_button_save_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonSetMedals" to="." method="_on_button_set_medals_pressed"]
+[connection signal="pressed" from="CanvasLayer/CanvasLayer/ButtonSaveMedal" to="." method="_on_button_save_medal_pressed"]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://lqrlq1aib3rx"]
+
+[ext_resource type="Script" path="res://level/levelEditor/props/blocs/edit_bloc.gd" id="1_4xv3w"]
+[ext_resource type="PackedScene" uid="uid://1ngkabc357g3" path="res://props/ramp/ramp.tscn" id="1_arigc"]
+[ext_resource type="Script" path="res://level/levelEditor/relative.gd" id="2_dtmxf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ywwaj"]
+size = Vector3(0.5, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sajps"]
+transparency = 1
+albedo_color = Color(0.764706, 0.643137, 0, 0.223529)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i6fym"]
+material = SubResource("StandardMaterial3D_sajps")
+size = Vector3(0.5, 1, 5)
+
+[node name="editRamp" type="Node3D"]
+script = ExtResource("1_4xv3w")
+
+[node name="ramp" parent="." instance=ExtResource("1_arigc")]
+
+[node name="StaticBodyFor" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.84834, -5)
+script = ExtResource("2_dtmxf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBodyFor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249348, 0.498696, -5.12082e-08)
+shape = SubResource("BoxShape3D_ywwaj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBodyFor"]
+transform = Transform3D(0.972299, 0, 0, 0, 1, 0, 0, 0, 1, -0.249348, 0.498696, -5.11936e-08)
+mesh = SubResource("BoxMesh_i6fym")
+
+[node name="StaticBodyBack" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("2_dtmxf")
+rota = 180.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBodyBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25284, 0.497588, -1.30302e-07)
+shape = SubResource("BoxShape3D_ywwaj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBodyBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25296, 0.497588, -1.30302e-07)
+mesh = SubResource("BoxMesh_i6fym")

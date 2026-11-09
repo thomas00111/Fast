@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://tala6v5s85qa"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ntmn4"]
+load_path = "res://.godot/imported/texture_02.png-621a1091cdc40a8dacb61bd810aa2c45.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_228j1"]
+albedo_texture = SubResource("CompressedTexture2D_ntmn4")
+uv1_scale = Vector3(4, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gnjbo"]
+material = SubResource("StandardMaterial3D_228j1")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nfu1w"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pa0b3"]
+load_path = "res://.godot/imported/texture_01.png-4541370477b1557379e9a05c04e9f1d6.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jji2a"]
+albedo_texture = SubResource("CompressedTexture2D_pa0b3")
+uv1_scale = Vector3(4, 4, 4)
+uv2_scale = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ogqq8"]
+material = SubResource("StandardMaterial3D_jji2a")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wr5yl"]
+
+[node name="GridMesh" type="Node3D"]
+
+[node name="blanc" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_gnjbo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="blanc"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blanc/StaticBody3D"]
+shape = SubResource("BoxShape3D_nfu1w")
+
+[node name="noir" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.996609, 0, 0, 0, 0.996609, 0, 0, 0, 0.996609, 0, 0, 0)
+mesh = SubResource("BoxMesh_ogqq8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="noir"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="noir/StaticBody3D"]
+shape = SubResource("BoxShape3D_wr5yl")

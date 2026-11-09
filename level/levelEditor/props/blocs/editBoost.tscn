@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpqtapc8500xr"]
+
+[ext_resource type="Script" path="res://level/levelEditor/props/blocs/edit_bloc.gd" id="1_c8f76"]
+[ext_resource type="PackedScene" uid="uid://sdvler5bgy1i" path="res://surface/boost/boost.tscn" id="1_lelif"]
+[ext_resource type="Script" path="res://level/levelEditor/relative.gd" id="3_8qabp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2taaq"]
+size = Vector3(0.5, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odjvq"]
+transparency = 1
+albedo_color = Color(0.764706, 0.643137, 0, 0.223529)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rtd4u"]
+material = SubResource("StandardMaterial3D_odjvq")
+size = Vector3(0.5, 1, 5)
+
+[node name="EditBoost" type="Node3D"]
+script = ExtResource("1_c8f76")
+
+[node name="Boost" parent="." instance=ExtResource("1_lelif")]
+
+[node name="StaticBodyLeft" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -2.5)
+script = ExtResource("3_8qabp")
+rota = 90.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBodyLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.252076, 0.498126, 0)
+shape = SubResource("BoxShape3D_2taaq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBodyLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.251956, 0.498126, 0)
+mesh = SubResource("BoxMesh_rtd4u")
+
+[node name="StaticBodyRight" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.00672889, -2.5)
+script = ExtResource("3_8qabp")
+rota = -90.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBodyRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250052, 0.494741, 0)
+shape = SubResource("BoxShape3D_2taaq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBodyRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250172, 0.494741, 0)
+mesh = SubResource("BoxMesh_rtd4u")
+
+[node name="StaticBodyFor" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -5)
+script = ExtResource("3_8qabp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBodyFor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249348, 0.498696, -5.12082e-08)
+shape = SubResource("BoxShape3D_2taaq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBodyFor"]
+transform = Transform3D(0.972299, 0, 0, 0, 1, 0, 0, 0, 1, -0.249348, 0.498696, -5.11936e-08)
+mesh = SubResource("BoxMesh_rtd4u")
+
+[node name="StaticBodyBack" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("3_8qabp")
+rota = 180.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBodyBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25284, 0.497588, -1.30302e-07)
+shape = SubResource("BoxShape3D_2taaq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBodyBack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25296, 0.497588, -1.30302e-07)
+mesh = SubResource("BoxMesh_rtd4u")

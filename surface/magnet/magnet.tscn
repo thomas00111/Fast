@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://7gbd20a5a3wj"]
+
+[ext_resource type="Script" path="res://surface/magnet/magnet.gd" id="1_hsb5a"]
+[ext_resource type="Script" path="res://level/levelEditor/props/blocs/parentEdit.gd" id="2_0icx7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s44py"]
+size = Vector3(5, 5, 23)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trbmr"]
+albedo_color = Color(0.555249, 0.712625, 1, 1)
+metallic_specular = 0.0
+roughness = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_in86v"]
+material = SubResource("StandardMaterial3D_trbmr")
+size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tf3km"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y2qxs"]
+transparency = 1
+albedo_color = Color(1, 0.303473, 0.315887, 0.345098)
+metallic_specular = 0.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_cjt4x"]
+material = SubResource("StandardMaterial3D_y2qxs")
+inner_radius = 2.0
+outer_radius = 2.5
+
+[sub_resource type="Curve" id="Curve_sk7h7"]
+_data = [Vector2(0.004329, 0.197802), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="magnet" type="Node3D"]
+script = ExtResource("1_hsb5a")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.5)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16954, 15.8311)
+shape = SubResource("BoxShape3D_s44py")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -2.5)
+script = ExtResource("2_0icx7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_in86v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_tf3km")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, 25.648)
+amount = 4
+lifetime = 5.0
+mesh = SubResource("TorusMesh_cjt4x")
+direction = Vector3(0, -1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 6.0
+initial_velocity_max = 6.0
+scale_amount_curve = SubResource("Curve_sk7h7")
+
+[node name="TimerParticle" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="TimerParticle" to="." method="_on_timer_particle_timeout"]

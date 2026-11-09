@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://2oty31owr4h1"]
+
+[ext_resource type="Script" path="res://finish/finish.gd" id="1_eair6"]
+[ext_resource type="Shader" path="res://finish/finish.gdshader" id="2_veqen"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22efw"]
+render_priority = 0
+shader = ExtResource("2_veqen")
+shader_parameter/shield_color = Color(0.322827, 0.213797, 0, 1)
+shader_parameter/wave_height = 0.0
+shader_parameter/wave_speed = Vector2(10.72, 0.05)
+shader_parameter/fresnel_power = 5.762
+shader_parameter/center_visibility = 0.25
+shader_parameter/hit_position = Vector3(0, 1, 0)
+shader_parameter/hit_color = Color(0.689772, 0.480733, 0, 1)
+shader_parameter/hit_radius = 2.565
+shader_parameter/hit_ring_width = 0.6
+shader_parameter/hit_push_force = 0.075
+
+[sub_resource type="SphereMesh" id="SphereMesh_a8tru"]
+material = SubResource("ShaderMaterial_22efw")
+radius = 1.0
+height = 2.0
+rings = 12
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s4c7y"]
+radius = 1.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cs7da"]
+albedo_color = Color(0.377919, 0.377919, 0.377919, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0ftyc"]
+material = SubResource("StandardMaterial3D_cs7da")
+top_radius = 1.2
+bottom_radius = 1.2
+height = 0.2
+
+[node name="finish" type="Node3D"]
+script = ExtResource("1_eair6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00381, 0)
+mesh = SubResource("SphereMesh_a8tru")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00381, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_s4c7y")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CylinderMesh_0ftyc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

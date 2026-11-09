@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs22m7vmh7xkb"]
+
+[ext_resource type="Script" path="res://character/ghost.gd" id="1_oa5p4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0wmw"]
+transparency = 1
+albedo_color = Color(0.580392, 0.580392, 0.580392, 0.52549)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0tisq"]
+material = SubResource("StandardMaterial3D_b0wmw")
+
+[node name="ghost" type="Node3D"]
+script = ExtResource("1_oa5p4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_0tisq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

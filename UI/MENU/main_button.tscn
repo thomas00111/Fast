@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://leshw3olsdlo"]
+
+[ext_resource type="FontFile" uid="uid://de4k0luy4njm4" path="res://UI/font/PoetsenOne-Regular.ttf" id="1_cdaou"]
+[ext_resource type="Script" path="res://UI/MENU/main_button.gd" id="1_i6htv"]
+[ext_resource type="Texture2D" uid="uid://s2ej3e015wul" path="res://UI/buttons/buttonColor.png" id="1_ogopf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_imqi7"]
+texture = ExtResource("1_ogopf")
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+modulate_color = Color(0.737193, 0.737193, 0.737193, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5u1m5"]
+texture = ExtResource("1_ogopf")
+modulate_color = Color(0.830335, 0.830335, 0.830335, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iihf2"]
+texture = ExtResource("1_ogopf")
+modulate_color = Color(0.525101, 0.525101, 0.525101, 1)
+
+[node name="main_button" type="Button"]
+anchors_preset = -1
+anchor_right = 0.054
+anchor_bottom = 0.046
+offset_right = -0.208
+offset_bottom = 0.191998
+theme_override_colors/font_hover_color = Color(0.815686, 0.811765, 0.811765, 1)
+theme_override_colors/font_pressed_color = Color(0.815686, 0.811765, 0.811765, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_cdaou")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_imqi7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5u1m5")
+theme_override_styles/normal = SubResource("StyleBoxTexture_iihf2")
+script = ExtResource("1_i6htv")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

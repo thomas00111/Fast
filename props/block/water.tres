@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dm1mu1b2j5pej"]
+
+[ext_resource type="Shader" path="res://props/block/water.gdshader" id="1_tdkdq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_tdkdq")
+shader_parameter/WATER_COL = Color(0.0692909, 0.43134, 0.977391, 1)
+shader_parameter/WATER2_COL = Color(0.275718, 0.55258, 0.988071, 1)
+shader_parameter/FOAM_COL = Color(0.146874, 0.468824, 0.984206, 1)
+shader_parameter/distortion_speed = 2.0
+shader_parameter/tile = Vector2(50, 50)
+shader_parameter/height = 2.0
+shader_parameter/wave_size = Vector2(2, 2)
+shader_parameter/wave_speed = 1.5

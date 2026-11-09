@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://bb22uctvr77tx"]
+
+[ext_resource type="PackedScene" uid="uid://dw5ydyfox5csk" path="res://props/bump/bump.tscn" id="1_h4fba"]
+[ext_resource type="Script" path="res://level/levelEditor/props/blocs/edit_bloc.gd" id="1_h6sk5"]
+[ext_resource type="Script" path="res://level/levelEditor/props/blocs/parentEdit.gd" id="3_di0ci"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r8vpn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tqu5"]
+albedo_color = Color(0.270588, 0.372549, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0c17c"]
+material = SubResource("StandardMaterial3D_3tqu5")
+
+[node name="editBump" type="Node3D"]
+script = ExtResource("1_h6sk5")
+
+[node name="bump" parent="." instance=ExtResource("1_h4fba")]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="bump"]
+script = ExtResource("3_di0ci")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bump/StaticBody3D2"]
+shape = SubResource("SphereShape3D_r8vpn")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="bump"]
+mesh = SubResource("SphereMesh_0c17c")
+skeleton = NodePath("../..")

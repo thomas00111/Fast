@@ -1,0 +1,366 @@
+[gd_scene load_steps=24 format=3 uid="uid://7pwvpff1rip0"]
+
+[ext_resource type="Script" path="res://UI/MENU/tuto_finish.gd" id="1_ko670"]
+[ext_resource type="Texture2D" uid="uid://b3yo16c5nwpt1" path="res://UI/buttons/homeButton.png" id="2_efka0"]
+[ext_resource type="Texture2D" uid="uid://2xh0tfj56jm4" path="res://UI/buttons/restartButton.png" id="3_qumbi"]
+[ext_resource type="Texture2D" uid="uid://mnjri5xh4pu2" path="res://UI/buttons/saveButton.png" id="4_s11ya"]
+[ext_resource type="Texture2D" uid="uid://dke7mc43h4182" path="res://UI/buttons/checkButton.png" id="5_7pyc7"]
+[ext_resource type="Texture2D" uid="uid://by3rdatom2h00" path="res://UI/buttons/backButton.png" id="6_pnt1j"]
+[ext_resource type="Texture2D" uid="uid://itol8d2undy6" path="res://UI/medals/noDash.png" id="8_kevwl"]
+[ext_resource type="Texture2D" uid="uid://go6u0c7kwooa" path="res://UI/medals/noGrappin.png" id="9_djk23"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4xyj1"]
+texture = ExtResource("2_efka0")
+expand_margin_left = 60.0
+expand_margin_top = 18.0
+expand_margin_right = 60.0
+expand_margin_bottom = 18.0
+modulate_color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cveil"]
+texture = ExtResource("2_efka0")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1jqb0"]
+texture = ExtResource("2_efka0")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fm2ed"]
+texture = ExtResource("3_qumbi")
+expand_margin_left = 60.0
+expand_margin_top = 18.0
+expand_margin_right = 60.0
+expand_margin_bottom = 18.0
+modulate_color = Color(0.662452, 0.662452, 0.662452, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8aon1"]
+texture = ExtResource("3_qumbi")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jlgm"]
+texture = ExtResource("3_qumbi")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u6w1f"]
+texture = ExtResource("4_s11ya")
+expand_margin_left = 60.0
+expand_margin_top = 18.0
+expand_margin_right = 60.0
+expand_margin_bottom = 18.0
+modulate_color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_njfup"]
+texture = ExtResource("4_s11ya")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ogdfo"]
+texture = ExtResource("4_s11ya")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6gkad"]
+texture = ExtResource("5_7pyc7")
+expand_margin_left = 60.0
+expand_margin_top = 18.0
+expand_margin_right = 60.0
+expand_margin_bottom = 18.0
+modulate_color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1kuvn"]
+texture = ExtResource("5_7pyc7")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i8akd"]
+texture = ExtResource("5_7pyc7")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gs7x1"]
+texture = ExtResource("6_pnt1j")
+expand_margin_left = 60.0
+expand_margin_top = 18.0
+expand_margin_right = 60.0
+expand_margin_bottom = 18.0
+modulate_color = Color(0.662745, 0.662745, 0.662745, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_72l55"]
+texture = ExtResource("6_pnt1j")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wt8nc"]
+texture = ExtResource("6_pnt1j")
+expand_margin_left = 50.0
+expand_margin_top = 15.0
+expand_margin_right = 50.0
+expand_margin_bottom = 15.0
+
+[node name="tuto_finish" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ko670")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.001
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.96
+offset_right = 2.0
+offset_bottom = -2.04004
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.898039, 0.898039, 0.898039, 0.243137)
+
+[node name="Label_level_name" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.362
+anchor_top = 0.077
+anchor_right = 0.644
+anchor_bottom = 0.151
+offset_left = -0.0400391
+offset_top = -0.160011
+offset_right = 0.519897
+offset_bottom = -0.0800018
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 66
+text = "tutorial complete"
+
+[node name="Label_time" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.451
+anchor_top = 0.303
+anchor_right = 0.52
+anchor_bottom = 0.386
+offset_left = -4.91998
+offset_top = -0.23999
+offset_right = 0.600037
+offset_bottom = -0.039978
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+
+[node name="Label_pb" type="Label" parent="Control"]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.407
+anchor_top = 0.453
+anchor_right = 0.56
+anchor_bottom = 0.506
+offset_left = -118.44
+offset_top = -20.24
+offset_right = 131.44
+offset_bottom = 25.64
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "personal best"
+horizontal_alignment = 1
+
+[node name="Label_bestTime" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.424
+anchor_top = 0.515
+anchor_right = 0.552
+anchor_bottom = 0.582
+offset_left = -74.08
+offset_top = -18.2
+offset_right = 46.8
+offset_bottom = 9.11993
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "best time : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_main" type="Button" parent="Control"]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29
+anchor_top = 0.755
+anchor_right = 0.394
+anchor_bottom = 0.88
+offset_left = 3.20001
+offset_top = -3.40002
+offset_right = 3.19995
+offset_bottom = -3.40002
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_4xyj1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_cveil")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1jqb0")
+
+[node name="Button_restart" type="Button" parent="Control"]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.445
+anchor_top = 0.755
+anchor_right = 0.549
+anchor_bottom = 0.88
+offset_left = -6.39996
+offset_top = -0.400024
+offset_right = -6.08008
+offset_bottom = -0.400024
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxTexture_fm2ed")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8aon1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8jlgm")
+
+[node name="ButtonSaveGhost" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.593
+anchor_top = 0.755
+anchor_right = 0.697
+anchor_bottom = 0.88
+offset_left = -4.55994
+offset_top = -0.400024
+offset_right = -4.23999
+offset_bottom = -0.400024
+theme_override_styles/hover = SubResource("StyleBoxTexture_u6w1f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_njfup")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ogdfo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+y_sort_enabled = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.815686, 0.815686, 0.815686, 0.227451)
+
+[node name="LineEditGhost" type="LineEdit" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -15.5
+offset_right = 124.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "nom du ghost"
+
+[node name="ButtonSave" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.381
+anchor_top = 0.754
+anchor_right = 0.485
+anchor_bottom = 0.879
+offset_left = -0.52002
+offset_top = -0.320007
+offset_right = -0.199951
+offset_bottom = -0.320068
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_6gkad")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1kuvn")
+theme_override_styles/normal = SubResource("StyleBoxTexture_i8akd")
+
+[node name="LabelLoad" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.435
+anchor_top = 0.284
+anchor_right = 0.544
+anchor_bottom = 0.331
+offset_left = 0.799927
+offset_top = 0.279999
+offset_right = -0.480103
+offset_bottom = -0.480042
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 41
+text = "Save ghost"
+horizontal_alignment = 1
+
+[node name="ButtonCancel" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.519
+anchor_top = 0.755
+anchor_right = 0.623
+anchor_bottom = 0.88
+offset_left = 0.631897
+offset_top = -0.400085
+offset_right = 0.952026
+offset_bottom = -0.400085
+theme_override_styles/hover = SubResource("StyleBoxTexture_gs7x1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_72l55")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wt8nc")
+
+[node name="NoDash" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(823.5, 702.5)
+scale = Vector2(5, 5)
+texture = ExtResource("8_kevwl")
+
+[node name="NoGrappin" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(1032.5, 698.5)
+scale = Vector2(5, 5)
+texture = ExtResource("9_djk23")
+
+[connection signal="pressed" from="Control/Button_main" to="." method="_on_button_main_pressed"]
+[connection signal="pressed" from="Control/Button_restart" to="." method="_on_button_restart_pressed"]
+[connection signal="pressed" from="Control/ButtonSaveGhost" to="." method="_on_button_save_ghost_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonSave" to="." method="_on_button_save_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonCancel" to="." method="_on_button_cancel_pressed"]

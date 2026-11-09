@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmq74xa2dol0o"]
+
+[ext_resource type="Script" path="res://level/levelEditor/props/blocs/parentEdit.gd" id="1_aiv0d"]
+[ext_resource type="Shader" path="res://props/block/grid.gdshader" id="2_dv4gj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0nkr"]
+size = Vector3(5, 5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lupu8"]
+render_priority = 0
+shader = ExtResource("2_dv4gj")
+shader_parameter/world_uv = true
+shader_parameter/object_uv = false
+shader_parameter/object_uv_scale = Vector2(1, 1)
+shader_parameter/preset_color = 0
+shader_parameter/base_color = Color(0.381703, 0.381703, 0.381703, 1)
+shader_parameter/metalic = 0.25
+shader_parameter/roughness = 0.75
+shader_parameter/grid_scale = 1.0
+shader_parameter/grid_width = 0.01
+shader_parameter/grid_color = Color(0.753983, 0.753984, 0.753983, 1)
+shader_parameter/inside_scale = 0.0
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_color = Color(0, 0, 0, 0.8)
+shader_parameter/checkered = true
+shader_parameter/sub_checkered_grid = false
+shader_parameter/checkered_color = Color(0.493545, 0.493546, 0.493545, 1)
+shader_parameter/checkered_blend_color = 0.1
+shader_parameter/use_inside_uv = false
+shader_parameter/use_albedo_color = false
+shader_parameter/albedo_alpha = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_73sgx"]
+material = SubResource("ShaderMaterial_lupu8")
+size = Vector3(5, 5, 1)
+
+[node name="wall" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.5)
+script = ExtResource("1_aiv0d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_v0nkr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_73sgx")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://sdvler5bgy1i"]
+
+[ext_resource type="Script" path="res://surface/boost/boost.gd" id="1_ulmjx"]
+[ext_resource type="Script" path="res://level/levelEditor/props/blocs/parentEdit.gd" id="2_ylny6"]
+[ext_resource type="Shader" path="res://surface/boost/boost.gdshader" id="3_q1n4x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6qkkl"]
+size = Vector3(5, 1.31369, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v5h10"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gouft"]
+render_priority = 0
+shader = ExtResource("3_q1n4x")
+shader_parameter/water_color = Color(0.808454, 0.63959, 0.275543, 1)
+shader_parameter/foam_color = Color(0.952486, 0.915594, 0.697955, 1)
+shader_parameter/water_opacity = 1.0
+shader_parameter/wave_frequency = 6.0
+shader_parameter/wave_speed = 3.0
+shader_parameter/max_radius = 10.0
+shader_parameter/noise_scale = 1.5
+shader_parameter/distortion_strength = 0.0
+shader_parameter/breakup_strength = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_wt312"]
+material = SubResource("ShaderMaterial_gouft")
+size = Vector3(5, 1, 5)
+
+[node name="Boost" type="Node3D"]
+script = ExtResource("1_ulmjx")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.5)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16954, 0)
+shape = SubResource("BoxShape3D_6qkkl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.5)
+script = ExtResource("2_ylny6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_v5h10")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_wt312")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxr0vxkhsjrsm"]
+
+[ext_resource type="PackedScene" uid="uid://dg3d0ypceprlq" path="res://UI/MENU/timer/timer_ui.tscn" id="1_8k7g7"]
+[ext_resource type="Script" path="res://level/levelEditor/level.gd" id="1_86kqd"]
+[ext_resource type="Shader" path="res://level/sky.gdshader" id="2_qgjp5"]
+[ext_resource type="PackedScene" uid="uid://bdm62ewxk3nxk" path="res://UI/MENU/finish_ui.tscn" id="2_v57m2"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://character/character.tscn" id="3_lk7lt"]
+[ext_resource type="PackedScene" uid="uid://bs22m7vmh7xkb" path="res://character/ghost.tscn" id="4_vjuk4"]
+[ext_resource type="PackedScene" uid="uid://brx1kfkreopi7" path="res://props/block/water.tscn" id="5_igrnh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpgdy"]
+shader = ExtResource("2_qgjp5")
+shader_parameter/offset_horizon = 0.7
+shader_parameter/horizon_intensity = -10.0
+shader_parameter/sun_set = Color(1, 0.8, 1, 1)
+shader_parameter/horizon_color_day = Color(0, 0.8, 1, 1)
+shader_parameter/horizon_color_night = Color(0, 0.8, 1, 1)
+shader_parameter/sun_color = Color(0.617455, 0.617455, 0.617455, 1)
+shader_parameter/sun_radius = 0.5
+shader_parameter/flat_sun = true
+shader_parameter/moon_color = Color(1, 1, 1, 1)
+shader_parameter/moon_radius = 0.15
+shader_parameter/moon_crescent = -0.3
+shader_parameter/dark_falloff = 4.0
+shader_parameter/day_bottom_color = Color(0.615974, 1, 0.997465, 1)
+shader_parameter/day_top_color = Color(0.507658, 0.865996, 1, 1)
+shader_parameter/night_bottom_color = Color(0, 0, 0.2, 1)
+shader_parameter/night_top_color = Color(0, 0, 0, 1)
+shader_parameter/base_noise_scale = 0.2
+shader_parameter/stars_speed = 0.3
+shader_parameter/stars_cutoff = 0.08
+shader_parameter/stars_sky_color = Color(0, 0.2, 0.1, 1)
+
+[sub_resource type="Sky" id="Sky_yxyox"]
+sky_material = SubResource("ShaderMaterial_bpgdy")
+
+[sub_resource type="Environment" id="Environment_vvqvk"]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_yxyox")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.0
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="level" type="Node3D"]
+script = ExtResource("1_86kqd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vvqvk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="timer_ui" parent="." instance=ExtResource("1_8k7g7")]
+
+[node name="finish_UI" parent="." instance=ExtResource("2_v57m2")]
+visible = false
+
+[node name="Character" parent="." instance=ExtResource("3_lk7lt")]
+
+[node name="ghost" parent="." instance=ExtResource("4_vjuk4")]
+
+[node name="blocContainer" type="Node3D" parent="."]
+
+[node name="Water" parent="." instance=ExtResource("5_igrnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
